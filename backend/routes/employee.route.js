@@ -6,7 +6,7 @@ const employeeRoute = express.Router() ;
 let Employee = require('../models/Employee') //Schema of an Employee
 
 //Add Employee
-employeeRoute.route('/create').post((req, res, next) => {
+employeeRoute.route('/empolyee').post((req, res, next) => {
     Employee.create(req.body, (error, data) => {
       if (error) {
         return next(error)
@@ -17,7 +17,7 @@ employeeRoute.route('/create').post((req, res, next) => {
 });
 
 // Get All Employees
-employeeRoute.route('/').get((req, res) => {
+employeeRoute.route('/empolyee').get((req, res) => {
     Employee.find((error, data) => {
       if (error) {
         return next(error)
@@ -28,7 +28,7 @@ employeeRoute.route('/').get((req, res) => {
   })
 
   // Get single employee
-employeeRoute.route('/read/:id').get((req, res) => {
+employeeRoute.route('/empolyee/:id').get((req, res) => {
     Employee.findById(req.params.id, (error, data) => {
       if (error) {
         return next(error)
@@ -39,7 +39,7 @@ employeeRoute.route('/read/:id').get((req, res) => {
   })
   
 // Update employee
-employeeRoute.route('/update/:id').put((req, res, next) => {
+employeeRoute.route('/empolyee/:id').put((req, res, next) => {
     Employee.findByIdAndUpdate(req.params.id, {
       $set: req.body
     }, (error, data) => {
@@ -54,7 +54,7 @@ employeeRoute.route('/update/:id').put((req, res, next) => {
   })
 
   // Delete employee
-employeeRoute.route('/delete/:id').delete((req, res, next) => {
+employeeRoute.route('/empolyee/:id').delete((req, res, next) => {
     Employee.findOneAndRemove(req.params.id, (error, data) => {
       if (error) {
         return next(error);

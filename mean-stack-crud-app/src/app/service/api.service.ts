@@ -9,14 +9,14 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 export class ApiService {
   
-  baseUri:string = 'http://localhost:4000/api';
+  baseUri:string = 'http://localhost:4000/api/empolyee';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
 
   // Create
   createEmployee(data): Observable<any> {
-    let url = `${this.baseUri}/create`;
+    let url = `${this.baseUri}`;
     return this.http.post(url, data)
       .pipe(
         catchError(this.errorMgmt)
@@ -30,7 +30,7 @@ export class ApiService {
 
   // Get employee
   getEmployee(id): Observable<any> {
-    let url = `${this.baseUri}/read/${id}`;
+    let url = `${this.baseUri}/${id}`;
     return this.http.get(url, {headers: this.headers}).pipe(
       map((res: Response) => {
         return res || {}
@@ -41,7 +41,7 @@ export class ApiService {
 
   // Update employee
   updateEmployee(id, data): Observable<any> {
-    let url = `${this.baseUri}/update/${id}`;
+    let url = `${this.baseUri}/${id}`;
     return this.http.put(url, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
     )
@@ -49,7 +49,7 @@ export class ApiService {
 
   // Delete employee
   deleteEmployee(id): Observable<any> {
-    let url = `${this.baseUri}/delete/${id}`;
+    let url = `${this.baseUri}/${id}`;
     return this.http.delete(url, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
     )
